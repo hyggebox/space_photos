@@ -1,6 +1,7 @@
 import os
 import pathlib
 import requests
+import telegram
 
 from datetime import datetime
 from dotenv import load_dotenv
@@ -74,12 +75,19 @@ def fetch_epic_img():
 
 if __name__ == "__main__":
     load_dotenv()
+
     NASA_API_KEY = os.environ['NASA_API_KEY']
+    CHAT_ID = "@GreatSpacePics"
+    tg_msg = "Hello everybody!"
 
     # Create /images directory
     pathlib.Path('images/').mkdir(exist_ok=True)
 
-    fetch_spacex_launch()
-    fetch_nasa_apod()
-    fetch_epic_img()
+    # fetch_spacex_launch()
+    # fetch_nasa_apod()
+    # fetch_epic_img()
+
+    # Telegram bot
+    bot = telegram.Bot(token=os.environ["TG_BOT_TOKEN"])
+    bot.send_message(text=tg_msg, chat_id=CHAT_ID)
 
