@@ -1,5 +1,6 @@
 import os
 import pathlib
+import random
 import requests
 import telegram
 
@@ -79,6 +80,7 @@ if __name__ == "__main__":
     NASA_API_KEY = os.environ['NASA_API_KEY']
     CHAT_ID = "@GreatSpacePics"
     tg_msg = "Hello everybody!"
+    tg_img_to_send = random.choice(os.listdir("images"))
 
     # Create /images directory
     pathlib.Path('images/').mkdir(exist_ok=True)
@@ -89,5 +91,6 @@ if __name__ == "__main__":
 
     # Telegram bot
     bot = telegram.Bot(token=os.environ["TG_BOT_TOKEN"])
-    bot.send_message(text=tg_msg, chat_id=CHAT_ID)
+    # bot.send_message(text=tg_msg, chat_id=CHAT_ID)
+    bot.send_photo(chat_id=CHAT_ID, photo=open(f"images/{tg_img_to_send}", "rb"))
 
