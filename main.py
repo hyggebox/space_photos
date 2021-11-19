@@ -26,6 +26,7 @@ if __name__ == "__main__":
         imgs_to_send = os.listdir("images")
 
         for img in imgs_to_send:
-            bot.send_photo(chat_id=chat_id, photo=open(f"images/{img}", "rb"))
+            with open(f"images/{img}", "rb") as image:
+                bot.send_photo(chat_id=chat_id, photo=image)
             sleep(int(os.getenv("DELAY", default=86400)))
 
