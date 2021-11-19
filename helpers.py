@@ -6,8 +6,7 @@ from urllib.parse import urlsplit, unquote
 
 def get_extension(url):
     split_url = urlsplit(unquote(url))
-    split_path = os.path.split(split_url.path)
-    file_extension = os.path.splitext(split_path[-1])
+    file_extension = os.path.splitext(split_url.path)[1]
     return file_extension[-1]
 
 
