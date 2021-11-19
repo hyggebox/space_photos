@@ -17,7 +17,7 @@ def fetch_nasa_apod(api_key):
     for json_record_num, json_record in enumerate(response.json()):
         img_url = json_record["url"]
         img_extension = get_extension(img_url)
-        download_img(img_url, f"nasa_apod{str(json_record_num)}{img_extension}")
+        download_img(img_url, f"nasa_apod{json_record_num}{img_extension}")
 
 
 def fetch_epic_img(api_key):
@@ -34,4 +34,4 @@ def fetch_epic_img(api_key):
             day=img_date.day,
             img_name=json_record["image"]
         )
-        download_img(epic_img_url, f"epic{str(json_record_num)}.png")
+        download_img(epic_img_url, f"epic{json_record_num}.png")
