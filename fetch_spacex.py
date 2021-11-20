@@ -14,5 +14,5 @@ def fetch_spacex_launch():
         if img_links:
             for img_num, link in enumerate(img_links):
                 img_extension = get_extension(link)
-                download_img(link, f"spacex{str(img_num)}{img_extension}")
+                download_img(link, f"spacex{img_num}{img_extension}")
             break
