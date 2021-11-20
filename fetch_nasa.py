@@ -24,8 +24,7 @@ def fetch_epic_img(api_key):
     epic_params = {
         "api_key": api_key
     }
-    epic_endpoint = f"https://epic.gsfc.nasa" \
-                    f".gov/api/natural"
+    epic_endpoint = f"https://epic.gsfc.nasa.gov/api/natural"
 
     img_url_template = "https://epic.gsfc.nasa.gov/archive/natural/{year}/{month}/{day}/png/{img_name}.png"
     response = requests.get(epic_endpoint, params=epic_params)
