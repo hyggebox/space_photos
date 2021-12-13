@@ -15,9 +15,10 @@ def fetch_nasa_apod(api_key):
     response.raise_for_status()
 
     for number, record in enumerate(response.json()):
-        img_url = record["url"]
-        img_extension = get_extension(img_url)
-        download_img(img_url, f"nasa_apod{number}{img_extension}")
+        if record["media_type"] == "image":
+            img_url = record["url"]
+            img_extension = get_extension(img_url)
+            download_img(img_url, f"nasa_apod{number}{img_extension}")
 
 
 def fetch_epic_img(api_key):
